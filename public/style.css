@@ -12,6 +12,19 @@ body {
   justify-content: center;
   align-items: center;
 }
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.toggle-btn button.active {
+  background: linear-gradient(90deg, #001f3f, #0074D9);
+  color: white;
+}
+
 
 .main-wrapper {
   display: flex;

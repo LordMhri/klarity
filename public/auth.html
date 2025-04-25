@@ -18,19 +18,67 @@
         <div class="login-box">
             <h2>Login Form</h2>
             <div class="toggle-btn">
-                <button class="active">Login</button>
-                <button>Signup</button>
+                <button id="loginToggle" class="active">Login</button>
+                <button id="signupToggle">Signup</button>
             </div>
-            <form>
-                <input type="email" placeholder="Email Address" required />
-                <input type="password" placeholder="Password" required />
-                <a href="#" class="forgot">Forgot password?</a>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-            <p class="signup-link">Not a member? <a href="#">S`ignup now</a></p>
+
+            <!-- Forms container -->
+            <div id="formContainer">
+                <form id="loginForm" class="visible">
+                    <input type="email" placeholder="Email Address" required />
+                    <input type="password" placeholder="Password" required />
+                    <a href="#" class="forgot">Forgot password?</a>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+
+                <form id="signupForm" class="hidden">
+                    <input type="text" placeholder="Username" required />
+                    <input type="email" placeholder="Email Address" required />
+                    <input type="password" placeholder="Password" required />
+                    <input type="password" placeholder="Confirm Password" required />
+                    <button type="submit" class="login-btn">Signup</button>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
+
+<script >
+    const loginToggle = document.getElementById('loginToggle');
+    const signupToggle = document.getElementById('signupToggle');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    loginToggle.addEventListener('click', function() {
+
+        loginForm.classList.remove('hidden');
+        loginForm.classList.add('visible');
+
+        signupForm.classList.remove('visible');
+        signupForm.classList.add('hidden');
+
+
+        loginToggle.classList.add('active');
+        signupToggle.classList.remove('active');
+    });
+
+    signupToggle.addEventListener('click', function() {
+
+        signupForm.classList.remove('hidden');
+        signupForm.classList.add('visible');
+
+
+        loginForm.classList.remove('visible');
+        loginForm.classList.add('hidden');
+
+
+        signupToggle.classList.add('active');
+        loginToggle.classList.remove('active');
+    });
+
+
+</script>
 </body>
 
 </html>
