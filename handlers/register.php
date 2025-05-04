@@ -2,12 +2,6 @@
 header('Content-Type: application/json');
 require_once "config.php";
 
-session_set_cookie_params([
-        'lifetime' => 1440000
-    ]
-);
-session_start();
-
 
 global $conn;
 
@@ -22,11 +16,15 @@ try {
         ':username' => $username,
         ':password' => $hashedPassword
     ]);
+    ini_set('session.gc_maxlifetime', 1440000);
+    session_set_cookie_params(['lifetime' => 1440000]);
+    session_start();
 
     $_SESSION['user_id'] = $conn->lastInsertId();
     $_SESSION['username'] = $username;
 
     header("Location: ../public/dashboard.html");
+    exit;
 
 
 
