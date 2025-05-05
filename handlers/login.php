@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-global $conn;
+$conn = new_PDO_connection();
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
@@ -26,14 +26,13 @@ try {
             session_start();
 
             $_SESSION['username'] = $username;
-            header("Location: ../public/dashboard.html");
+            header("Location: ../public/post/index.html");
             exit;
 
-            exit;
         } else {
             echo json_encode(["message" => "Incorrect username or password"]);
-            exit;
         }
+        exit;
     } else {
         echo json_encode(["message" => "Username does not exist."]);
         exit;

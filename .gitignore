@@ -3,3 +3,5 @@ check.*
 handlers/config.php
 .gitignore
 package.xml
+.env
+/vendor/
