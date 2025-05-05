@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 require_once "config.php";
 
 
-global $conn;
+$conn = new_PDO_connection();
 
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');

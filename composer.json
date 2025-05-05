@@ -1,0 +1,17 @@
+{
+    "name": "meheret/klarity",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Meheret\\Klarity\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lordmhri",
+            "email": "meheret.alemu-ug@aau.edu.et"
+        }
+    ]
+}
