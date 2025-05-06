@@ -1,0 +1,28 @@
+:root {
+    --primary-color : #003973; /*Regal blue*/
+    --secondary-color : #e5e5be /*Beryl Green*/;
+
+    --text-color : black;
+
+    --main-gradient: linear-gradient(135deg, var(--primary-color),var(--secondary-color));
+
+    --base-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--main-gradient) !important;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
