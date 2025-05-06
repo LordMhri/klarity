@@ -1,3 +1,10 @@
+<?php
+//session_start();
+//if (!$_SESSION['username']) {
+//    header("Location: ../auth.html");
+//    exit();
+//}
+//?>
 <!DOCTYPE html>
 <html>
 <head>

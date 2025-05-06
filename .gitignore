@@ -1,6 +1,5 @@
 check.*
 .idea/
-handlers/config.php
 .gitignore
 package.xml
 .env
