@@ -26,7 +26,7 @@ try {
             session_start();
 
             $_SESSION['username'] = $username;
-            header("Location: ../public/post/index.html");
+            header("Location: ../public/post/create_post.php");
             exit;
 
         } else {
