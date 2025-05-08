@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/footer.css">
 </head>
-<body>
+<body>      
 
 <?php include 'includes/navbar.php'; ?>
 
