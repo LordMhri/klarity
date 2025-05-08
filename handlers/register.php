@@ -23,7 +23,7 @@ try {
     $_SESSION['user_id'] = $conn->lastInsertId();
     $_SESSION['username'] = $username;
 
-    header("Location: ../public/dashboard.html");
+    header("Location: ../public/dashboard.php");
     exit;
 
 

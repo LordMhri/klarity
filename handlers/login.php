@@ -18,7 +18,7 @@ try {
         $hashedPassword = $result['password_hash'];
         if (password_verify($password, $hashedPassword)) {
 //            $_SESSION['username'] = $username;
-//            header("Location: ../public/dashboard.html");
+//            header("Location: ../public/dashboard.php");
 
 
             ini_set('session.gc_maxlifetime', 1440000);
