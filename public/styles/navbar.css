@@ -78,9 +78,47 @@
         display: block;
     }
 
+    .hamburger:hover {
+        cursor: pointer;
+    }
+
     .nav-links {
         display: none;
     }
+
+    .nav-links.show-links {
+        display: flex;
+        flex-direction: column;
+        background-color: #f8f9fa;
+        padding: 0 10px;
+        gap: 10px;
+        border-radius: 10px 10px 10px 0;
+        position: absolute;
+        top: 40px;
+        left: 5%;
+
+        align-items: center;
+        width: 35%;
+        z-index: 1000;
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+
+    }
+
+    .nav-links ul {
+        margin: 0;
+    }
+
+    .nav-links li {
+        padding: 10px;
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-links li:hover {
+        background: #0074D9;
+    }
+
     .search-container {
         display: none;
     }
