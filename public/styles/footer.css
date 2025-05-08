@@ -1,0 +1,34 @@
+aside
+{
+    text-align: center;
+    padding: 50px 50px 15px;
+    background: inherit;
+}
+
+h3 {
+    padding-bottom: 10px;
+}
+
+p {
+    font-weight: 500;
+}
+
+/*TODO: take care of list ordering if
+   list is added*/
+/*li {*/
+/*    justify-content: center;*/
+/*    display: inline ;*/
+/*    list-style-type: armenian;*/
+/*}*/
+
+footer {
+    padding: 20px;
+    padding-bottom: 5px;
+    background: #003973;
+}
+
+/*@media  (max-width:725px ) {*/
+/*    li {*/
+/*        display: block;*/
+/*    }*/
+/*}*/

@@ -18,7 +18,7 @@
 }
 
 body {
-    background: var(--main-gradient) !important;
+    background: var(--main-gradient);
     height: 100vh;
     display: flex;
     justify-content: center;
