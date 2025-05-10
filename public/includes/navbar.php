@@ -15,7 +15,8 @@
 <nav class="navbar">
     <div class="logo">K</div>
     <div class = "hamburger">
-        &#9660;
+        <img src="assets/menu.svg" width="40px" height="40px">
+
     </div>
     <ul class="nav-links">
         <li><a href="#">Feed</a></li>
@@ -29,6 +30,6 @@
         <button type="submit">SEARCH </button>
     </div>
     <div class = 'account-icon'>
-        ICON
+        <img src="assets/account.svg" height="40px" width="40px">
     </div>
 </nav>
