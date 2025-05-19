@@ -17,7 +17,7 @@ if (!(isset($_SESSION['user_id']))) {
 }
 
 
-require_once  "config/database.php";
+require_once "config/database.php";
 $conn = new_PDO_connection();
 
 if ($data) {
