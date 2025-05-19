@@ -1,7 +1,7 @@
 <?php
 
-//TODO : ensure cookies are valid before giving questions
-require_once  "config.php";
+//TODO : ensure cookies are valid before fetching posts
+require_once "config/database.php";
 header('Content-Type: application/json');
 $conn = new_PDO_connection();
 

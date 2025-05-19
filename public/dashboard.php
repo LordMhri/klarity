@@ -12,7 +12,7 @@
 <?php include 'includes/navbar.php'; ?>
 
 <div class="page-container">
-    <div class="side-bar">
+    <div class="left-side-bar">
         <ul>
             <li><a href="#">Feed </a></li>
             <li><a href="#">Questions </a></li>
@@ -23,8 +23,13 @@
     </div>
     
     <div class="main-content">
-        
-    </div>
+
+    </div >
+
+
+    <div class="right-side-bar">
+        <h1>Tags</h1>
+        </div>
 </div>
 
 <?php include 'includes/footer.php'; ?>

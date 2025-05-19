@@ -14,7 +14,7 @@
 <body>
 <div class="main-wrapper">
     <div class="question-wrapper">
-        <form method="POST" action="../../handlers/create_post.php">
+        <form method="POST" action="../../api/posts/create_post.php">
             <div class="title-wrapper">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title">
