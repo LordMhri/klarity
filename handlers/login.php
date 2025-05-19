@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once  "config/database.php";
 
 $conn = new_PDO_connection();
 $username = trim($_POST['username'] ?? '');
