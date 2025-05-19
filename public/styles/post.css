@@ -1,0 +1,14 @@
+.post-container {
+    display: flex;
+    min-height: 100px;
+    flex-direction: row;
+}
+
+.content {
+    border: 2px solid crimson;
+}
+.post-container {
+    border: 2px solid palegreen;
+}
+
+

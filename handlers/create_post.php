@@ -1,44 +1,36 @@
 <?php
+
+// allow access to session variables
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: ../public/auth.html");
+
+// Decode JSON data from the HTTP request body into a PHP object
+$data = json_decode(file_get_contents("php://input"),true);
+
+
+//if the session isnt set with the user_id the user isnt logged in
+if (!(isset($_SESSION['user_id']))) {
+    //send 401 response which means unauthorized
+    http_response_code(401);
+    echo  json_encode(array("message" => "User not logged in."));
     exit();
 }
 
-require_once "config.php";
 
-var_dump($_POST);
-
+require_once 'config.php';
 $conn = new_PDO_connection();
 
+if ($data) {
+    $type = $data['type'] ?? " ";
+    $title = $data['title'] ?? " ";
+    $content = $data['content'] ?? "";
+    $author_id = $_SESSION['user_id'] ?? "";
+    $create_post = "INSERT INTO posts(type,title,content,author_id) VALUES (:type,:title,:content,:author_id)";
+    //TODO: tag has a slug column not populated, a slug regex function needs to be created to insert slug into tag
+    $create_tag = "INSERT INTO tags (name) VALUES (:name)";
+    
 
-$type = trim($_POST['post_type'] ?? '');
-$title = trim($_POST['title'] ?? '');
-$content = trim($_POST['content'] ?? '');
+    
+    
 
-try {
-    $stmt1 = $conn->prepare("SELECT id FROM users WHERE username = :username");
-    $stmt1->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
-    $stmt1->execute();
-    $user = $stmt1->fetch(PDO::FETCH_ASSOC);
-
-    if (!$user) {
-        die(json_encode(["error" => "User not found."]));
-    }
-
-    $user_id = $user['id'];
-
-    $stmt2 = $conn->prepare("INSERT INTO posts (type, title, content, author_id) VALUES (:type, :title, :content, :author_id)");
-    $stmt2->bindParam(':type', $type, PDO::PARAM_STR);
-    $stmt2->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt2->bindParam(':content', $content, PDO::PARAM_STR);
-    $stmt2->bindParam(':author_id', $user_id, PDO::PARAM_INT);
-    $stmt2->execute();
-
-    echo json_encode(["success" => true, "post_id" => $conn->lastInsertId()]);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(["error" => $e->getMessage()]);
 }
-
