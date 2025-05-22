@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ).then(data => {
             if (data['success']) {
                 console.log('Login successful: ',data);
-                window.location.href = "public/pages/feed/feed.html";
+                window.location.href = "../pages/feed/feed.php";
             } else if (data['error']) {
                 console.log('Login failed: ',data.error);
             }
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data => {
                 if (data['success']) {
                     console.log('User created successfully');
-                    window.location.href = '../../public/pages/feed/feed.html'
+                    window.location.href = '../pages/feed/feed.php'
                 }else  {
                     console.log('An Error has occurred');
                 }
