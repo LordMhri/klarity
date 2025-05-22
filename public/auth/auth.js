@@ -26,15 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const usernameInput = document.querySelector('#loginForm input[name="username"]');
         const passwordInput = document.querySelector('#loginForm input[name="password"]');
+        
 
-            console.log(usernameInput.value);
-            console.log(passwordInput.value);
+            // console.log(usernameInput.value);
+            // console.log(passwordInput.value);
+            
 
         const username = usernameInput.value;
         const password = passwordInput.value;
 
-        fetch('/klarity/api/auth/login.php', {
-            method : 'POST',    
+        fetch('../../api/auth/login.php', {
+            method : 'POST',
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -42,14 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     username: username,
                     password: password,
+                   
                 }
             )
         }).then(response => response.json()
         ).then(data => {
-            if (data['status']) {
+            if (data['success']) {
                 console.log('Login successful: ',data);
-                // window.location.href = "/";
-            } else if (data.error) {
+                window.location.href = "../pages/feed/feed.php";
+            } else if (data['error']) {
                 console.log('Login failed: ',data.error);
             }
         }).catch(error => {
@@ -68,11 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const passwordInput = document.querySelector('#signupForm input[name="password"]');
         const usernameInput = document.querySelector('#signupForm input[name="username"]');
+        const emailInput = document.querySelector('#signupForm input[name="email"]');
         
         const password = passwordInput.value;
         const username = usernameInput.value;
+        const email = emailInput.value;
         
-        fetch('/klarity/api/auth/register.php', {
+        //this path is assuming that the server runs in the root server
+        // TODO: make changes so that the path can be resolved from anywhere
+        fetch('/api/auth/register.php', {
             method:'POST',
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -80,11 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
             body : new URLSearchParams({
                 username:username,
                 password :password,
+                email :email,
             })
         }).then(response => response.json()).then(
             data => {
                 if (data['success']) {
                     console.log('User created successfully');
+                    window.location.href = '../pages/feed/feed.php'
                 }else  {
                     console.log('An Error has occurred');
                 }

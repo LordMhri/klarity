@@ -14,8 +14,7 @@ $password = trim($_POST['password'] ?? '');
 $query = 'SELECT id,username, password_hash FROM users WHERE username = :username';
 
 try {
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt = $conn->prepare($query);    $stmt->bindParam(':username', $username);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 

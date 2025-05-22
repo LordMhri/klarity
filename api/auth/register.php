@@ -22,24 +22,26 @@ require_once __DIR__ . "/session.php";
 
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
+$email = trim($_POST['email'] ?? '');
 
 
-if (empty($username) || empty($password)) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Username and password are required']);
-    exit;
-}
+//if (empty($username) || empty($password)) {
+//    http_response_code(400);
+//    echo json_encode(['error' => 'Username and password are required']);
+//    exit;
+//}
 
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
-$sql = "INSERT INTO users (username, password_hash) VALUES (:username, :password)";
+$sql = "INSERT INTO users (username, password_hash,email) VALUES (:username, :password,:email)";
 try {
     $stmt = $conn->prepare($sql);
     $stmt->execute([
         ':username' => $username,
-        ':password' => $hashedPassword
+        ':password' => $hashedPassword,
+        ':email' => $email
     ]);
 
     $userId = $conn->lastInsertId();
