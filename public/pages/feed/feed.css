@@ -1,0 +1,46 @@
+/* Base Styles */
+.feed-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.question-card {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 0;
+}
+
+.question-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #0066cc;
+}
+
+.question-excerpt {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    background: #e1ecf4;
+    color: #39739d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Sidebar */
+.tags-sidebar {
+    position: sticky;
+    top: 1rem;
+}
+
+.tags-table td {
+    padding: 0.3rem;
+}

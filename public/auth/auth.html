@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Form</title>
-    <link rel="stylesheet" href="styles/base.css" />
-    <link rel="stylesheet" href="styles/auth.css">
-    <script src = 'scripts/auth.js'></script>
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="auth.css">
+    <script src = 'auth.js'></script>
 
 
 </head>
@@ -38,6 +38,7 @@
 
                 <form id="signupForm" class="hidden">
                     <input type="text" placeholder="Username" name="username" required />
+                    <input type="email" placeholder="Email" name="email" required />
                     <input type="password" placeholder="Password" id="password"  name="password" required />
                     <input type="password" placeholder="Confirm Password" id = "confirm-password" required />
                     <button type="submit" class="login-btn" id="signupSubmit">Signup</button>

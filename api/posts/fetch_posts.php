@@ -1,18 +1,12 @@
 <?php
-
-//TODO : ensure cookies are valid before fetching posts
-require_once "config/database.php";
 header('Content-Type: application/json');
-$conn = new_PDO_connection();
+//this is to be used for both single post fetching and multiple file fetching
+
+//1.checking for session and setting them
+require_once ''
 
 
-$fetch_posts = "SELECT * from posts order by created_at desc";
 
-try {
-    $stmt = $conn->prepare($fetch_posts);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($result);
-} catch (PDOException $e){
-    echo "Error: " . $e->getMessage();
-}
+//2.fetch multiple posts (dynamic?)
+
+//3.fetch single post

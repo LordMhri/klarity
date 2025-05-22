@@ -1,36 +1,107 @@
 <?php
-
-// allow access to session variables
+header('Content-Type: application/json');
 session_start();
 
+require_once __DIR__ . "/../../config/database.php";
 
-// Decode JSON data from the HTTP request body into a PHP object
-$data = json_decode(file_get_contents("php://input"),true);
-
-
-//if the session isnt set with the user_id the user isnt logged in
-if (!(isset($_SESSION['user_id']))) {
-    //send 401 response which means unauthorized
+// Validate session and inputs
+if (!isset($_SESSION['user_id'])) {
     http_response_code(401);
-    echo  json_encode(array("message" => "User not logged in."));
-    exit();
+    echo json_encode(["error" => "Unauthenticated", "message" => "Please login first."]);
+    exit;
 }
 
+$user_id = $_SESSION['user_id'];
+$type = $_POST['type'] ?? '';
+$title = trim($_POST['title'] ?? '');
+$content = trim($_POST['content'] ?? '');
+$raw_tags = $_POST['tags'] ?? [];
 
-require_once "config/database.php";
+
+//if (empty($title) || empty($content)) {
+//    http_response_code(400);
+//    echo json_encode(["error" => "Missing required fields"]);
+//    exit;
+//}
+
 $conn = new_PDO_connection();
 
-if ($data) {
-    $type = $data['type'] ?? " ";
-    $title = $data['title'] ?? " ";
-    $content = $data['content'] ?? "";
-    $author_id = $_SESSION['user_id'] ?? "";
-    $create_post = "INSERT INTO posts(type,title,content,author_id) VALUES (:type,:title,:content,:author_id)";
-    //TODO: tag has a slug column not populated, a slug regex function needs to be created to insert slug into tag
-    $create_tag = "INSERT INTO tags (name) VALUES (:name)";
-    
+try {
 
-    
-    
+    $conn->beginTransaction();
 
+    $insert_post = "INSERT INTO posts (title, type, content, author_id) 
+                   VALUES (:title, :type, :content, :author_id)";
+    $stmt = $conn->prepare($insert_post);
+    $stmt->execute([
+        ':title' => $title,
+        ':type' => $type,
+        ':content' => $content,
+        ':author_id' => $user_id
+    ]);
+
+    $post_id = $conn->lastInsertId();
+
+
+    if (!empty($raw_tags) && is_array($raw_tags)) {
+
+        $find_tag = "SELECT id FROM tags WHERE slug = :slug LIMIT 1";
+        $insert_tag = "INSERT INTO tags (name, slug) VALUES (:tag, :slug)";
+        $link_tag = "INSERT INTO post_tags (post_id, tag_id) VALUES (:post_id, :tag_id)";
+
+        $find_stmt = $conn->prepare($find_tag);
+        $tag_stmt = $conn->prepare($insert_tag);
+        $link_stmt = $conn->prepare($link_tag);
+
+        foreach ($raw_tags as $tag_name) {
+            $tag_name = trim($tag_name);
+            if (empty($tag_name)) continue;
+
+            $slug = sluggify($tag_name);
+
+
+            $find_stmt->execute([':slug' => $slug]);
+            $tag_id = $find_stmt->fetchColumn();
+
+
+            if (!$tag_id) {
+                $tag_stmt->execute([
+                    ':tag' => $tag_name,
+                    ':slug' => $slug
+                ]);
+                $tag_id = $conn->lastInsertId();
+            }
+
+
+            $link_stmt->execute([
+                ':post_id' => $post_id,
+                ':tag_id' => $tag_id
+            ]);
+        }
+    }
+
+
+    $conn->commit();
+
+    http_response_code(201);
+    echo json_encode([
+        'success' => true,
+        'post_id' => $post_id,
+        'message' => 'Post created successfully'
+    ]);
+
+} catch (PDOException $e) {
+    $conn->rollBack();
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Database error',
+        'message' => $e->getMessage() // Only for development, remove in production
+    ]);
+}
+
+function sluggify($string) {
+    $slug = strtolower(trim($string));
+    $slug = preg_replace('/[^a-z0-9-]/', '-', $slug); // Replace non-alphanumeric with -
+    $slug = preg_replace('/-+/', '-', $slug);         // Replace multiple - with single
+    return $slug;
 }
