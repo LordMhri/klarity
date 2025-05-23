@@ -1,0 +1,55 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+ob_start();
+
+require_once __DIR__ . "/../../config/database.php";
+
+
+$conn = new_PDO_connection();
+if (!$conn) {
+    ob_end_clean();
+    header("Location: /bin/signup.php?error=server");
+    exit;
+}
+
+$username = trim($_POST['username'] ?? '');
+$password = trim($_POST['password'] ?? '');
+$email = trim($_POST['email'] ?? '');
+
+if (empty($username) || empty($password) || empty($email)) {
+    ob_end_clean();
+    header("Location: /bin/signup.php?error=missing");
+    exit;
+}
+
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+$sql = "INSERT INTO users (username, password_hash, email) VALUES (:username, :password, :email)";
+try {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ':username' => $username,
+        ':password' => $hashedPassword,
+        ':email' => $email
+    ]);
+
+    $_SESSION['user_id'] = $conn->lastInsertId();
+    $_SESSION['username'] = $username;
+
+    ob_end_clean();
+    header("Location: /bin/login.php?signup=success");
+    exit;
+
+} catch (PDOException $exception) {
+    ob_end_clean();
+    if ($exception->getCode() == 23000) {
+        header("Location: /bin/signup.php?error=exists");
+    } else {
+        header("Location: /bin/signup.php?error=db");
+    }
+    exit;
+}

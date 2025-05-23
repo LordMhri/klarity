@@ -1,8 +1,9 @@
-aside
-{
+
+aside {
     text-align: center;
     padding: 50px 50px 15px;
     background: inherit;
+
 }
 
 h3 {
@@ -13,6 +14,15 @@ p {
     font-weight: 500;
 }
 
+footer {
+    background: #003973;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom when used with flex */
+}
+
 /*TODO: take care of list ordering if
    list is added*/
 /*li {*/
@@ -20,12 +30,6 @@ p {
 /*    display: inline ;*/
 /*    list-style-type: armenian;*/
 /*}*/
-
-footer {
-    padding: 20px;
-    padding-bottom: 5px;
-    background: #003973;
-}
 
 /*@media  (max-width:725px ) {*/
 /*    li {*/

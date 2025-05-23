@@ -1,4 +1,5 @@
-<style rel="stylsheet" href ='../styles/footer.css'></style>
+<link rel="stylesheet" href="../../public2/styles/footer.css">
+
 <footer>
     <aside>
         <h3>Klarity</h3>
