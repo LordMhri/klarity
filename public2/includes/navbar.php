@@ -2,10 +2,11 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const navLinks  = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-links');
         const hamburger = document.querySelector('.hamburger');
 
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('show-links');
         });
     });
@@ -19,11 +20,11 @@
 
     </div>
     <ul class="nav-links">
-        <li><a href="#">Feed</a></li>
-        <li><a href="#">Questions</a></li>
-        <li><a href="#">Ideas</a></li>
-        <li><a href="#">Tags</a></li>
-        <li><a href="#">Users</a></li>
+        <li> <a href="/bin/feed.php"> Feed </a> </li>
+        <li><a href="#"> Questions</a> </li>
+        <li><a href="#"> Ideas</a></li>
+        <li><a href="#"> Tags </a></li>
+        <li><a href="#"> Users</a></li>
     </ul>
     <div class="search-container">
         <input type="text">
