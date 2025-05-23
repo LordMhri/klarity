@@ -1,8 +1,4 @@
-<?php
-//
-//include('../../includes/navbar.php');
-//include('../../includes/footer.php');
-//?>
+<?php ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,16 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed - Q&A Platform</title>
-    <link rel="stylesheet" href="../../styles/navbar.css">
-    <link rel="stylesheet" href="../../styles/footer.css">
-    <link rel="stylesheet" href="feed.css">
-    <link rel="stylesheet" href="../../components/postcard/postcard.css">
-    <script type= 'module' src="feed.js"></script>
+    <link rel="stylesheet" href="/klarity/public2/styles/footer.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/feed.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/navbar.css">
 
 </head>
 <body>
 
-<?php include ('../../includes/navbar.php'); ?>
+<?php include ('../public2/includes/navbar.php'); ?>
 <div class="feed-container">
     <div class="left-side-bar">
         <nav class="links">
@@ -50,7 +44,8 @@
         <p>This is where the metrics be</p>
     </div>
 </div>
-<?php include ('../../includes/footer.php'); ?>
+<?php include ('../public2/includes/footer.php'); ?>
 
 </body>
 </html>
+

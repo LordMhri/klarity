@@ -1,4 +1,4 @@
-<style rel="stylesheet" href = "../styles/navbar.css"></style>
+<link rel="stylesheet" href="../../public2/styles/navbar.css">
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -15,7 +15,7 @@
 <nav class="navbar">
     <div class="logo">K</div>
     <div class = "hamburger">
-        <img src="../../assets/menu.svg" width="40px" height="40px">
+        <img src="/public2/assets/menu.svg" width="40px" height="40px">
 
     </div>
     <ul class="nav-links">
@@ -30,6 +30,6 @@
         <button type="submit">SEARCH </button>
     </div>
     <div class = 'account-icon'>
-        <img src="../../assets/account.svg" height="40px" width="40px">
+        <img src="/public2/assets/account.svg" height="40px" width="40px">
     </div>
 </nav>

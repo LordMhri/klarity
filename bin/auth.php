@@ -1,12 +1,13 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Form</title>
-    <link rel="stylesheet" href="../styles/base.css" />
-    <link rel="stylesheet" href="auth.css">
-    <script src = 'auth.js'></script>
+    <link rel="stylesheet" href="/klarity/public2/styles/base.css" />
+    <link rel="stylesheet" href="/klarity/public2/styles/auth.css" />
+    <script src = '/klarity/public2/scripts/auth.js'></script>
 
 
 </head>
@@ -36,7 +37,7 @@
                     <button type="submit" class="login-btn">Login</button>
                 </form>
 
-                <form id="signupForm" class="hidden">
+                <form id="signupForm" class="hidden" action="handlers/register_handler.php" method="post">
                     <input type="text" placeholder="Username" name="username" required />
                     <input type="email" placeholder="Email" name="email" required />
                     <input type="password" placeholder="Password" id="password"  name="password" required />
