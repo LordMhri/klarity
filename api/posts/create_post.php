@@ -95,13 +95,13 @@ try {
     http_response_code(500);
     echo json_encode([
         'error' => 'Database error',
-        'message' => $e->getMessage() // Only for development, remove in production
+        'message' => $e->getMessage()
     ]);
 }
 
 function sluggify($string) {
     $slug = strtolower(trim($string));
-    $slug = preg_replace('/[^a-z0-9-]/', '-', $slug); // Replace non-alphanumeric with -
-    $slug = preg_replace('/-+/', '-', $slug);         // Replace multiple - with single
+    $slug = preg_replace('/[^a-z0-9-]/', '-', $slug);
+    $slug = preg_replace('/-+/', '-', $slug);
     return $slug;
 }
