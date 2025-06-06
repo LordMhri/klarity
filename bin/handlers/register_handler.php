@@ -11,8 +11,7 @@ require_once __DIR__ . "/../../config/database.php";
 
 $conn = new_PDO_connection();
 if (!$conn) {
-    ob_end_clean();
-    header("Location: /bin/signup.php?error=server");
+    header("Location: /klarity/bin/register.php?error=server");
     exit;
 }
 
@@ -28,7 +27,7 @@ if (empty($username) || empty($password) || empty($email)) {
 
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO users (username, password_hash, email) VALUES (:username, :password, :email)";
+$sql = "INSERT INTO users (username, password, email) VALUES (:username, :password, :email)";
 try {
     $stmt = $conn->prepare($sql);
     $stmt->execute([
@@ -47,8 +46,10 @@ try {
 } catch (PDOException $exception) {
     ob_end_clean();
     if ($exception->getCode() == 23000) {
+        file_put_contents('/home/mhri/issue.log', $exception->getMessage() . "\n", FILE_APPEND);
         header("Location: /bin/signup.php?error=exists");
     } else {
+        file_put_contents('/home/mhri/issue.log', $exception->getMessage() . "\n", FILE_APPEND);
         header("Location: /bin/signup.php?error=db");
     }
     exit;
