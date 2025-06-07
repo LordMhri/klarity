@@ -1,0 +1,131 @@
+/* post-card.css */
+.post-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.post-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.post-type {
+    font-size: 0.8rem;
+    color: #3b82f6; /* blue accent for type label */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-title {
+    font-size: 1.25rem;
+    color: #111827; /* almost black for contrast */
+    margin: 0;
+}
+
+.post-body {
+    color: #4b5563; /* grey for body text */
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background-color: #e0f2fe; /* light blue for tags */
+    color: #0369a1;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.post-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280; /* soft grey */
+}
+
+.author-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.author-link:hover {
+    text-decoration: underline;
+}
+
+.post-stats {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+}
+
+.stat-item {
+    color: #9ca3af;
+}
+
+.vote-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.vote-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #6b7280; /* grey for default */
+    transition: color 0.2s;
+}
+
+.vote-button:hover {
+    color: #2563eb; /* blue highlight on hover */
+}
+
+.vote-count {
+    font-weight: bold;
+    color: #111827;
+    margin: 0.25rem 0;
+}
+
+
+.post-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-content {
+    flex: 1;
+}
+
+
+.post-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card-link:hover .post-card {
+    background-color: #f9fafb;
+}

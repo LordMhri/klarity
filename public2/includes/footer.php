@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../public2/styles/footer.css">
+<!--<link rel="stylesheet" href="../../public2/styles/footer.css">-->
 
 <footer>
     <aside>
