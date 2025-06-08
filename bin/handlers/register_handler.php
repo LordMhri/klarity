@@ -11,6 +11,7 @@ require_once __DIR__ . "/../../config/database.php";
 
 $conn = new_PDO_connection();
 if (!$conn) {
+    file_put_contents('/home/mhri/issue.log', print_r(var_dump()), FILE_APPEND);
     header("Location: /klarity/bin/register.php?error=server");
     exit;
 }
