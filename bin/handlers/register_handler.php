@@ -11,6 +11,7 @@ require_once __DIR__ . "/../../config/database.php";
 
 $conn = new_PDO_connection();
 if (!$conn) {
+    file_put_contents('/home/mhri/issue.log', print_r(var_dump()), FILE_APPEND);
     header("Location: /klarity/bin/register.php?error=server");
     exit;
 }
@@ -40,17 +41,17 @@ try {
     $_SESSION['username'] = $username;
 
     ob_end_clean();
-    header("Location: /bin/login.php?signup=success");
+    header("Location: /klarity/bin/feed.php?register=success");
     exit;
 
 } catch (PDOException $exception) {
     ob_end_clean();
     if ($exception->getCode() == 23000) {
         file_put_contents('/home/mhri/issue.log', $exception->getMessage() . "\n", FILE_APPEND);
-        header("Location: /bin/signup.php?error=exists");
+        header("Location: /klarity/bin/auth.php?error=exists");
     } else {
         file_put_contents('/home/mhri/issue.log', $exception->getMessage() . "\n", FILE_APPEND);
-        header("Location: /bin/signup.php?error=db");
+        header("Location: /klarity/bin/auth.php?error=server");
     }
     exit;
 }

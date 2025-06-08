@@ -20,6 +20,7 @@ create table posts (
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp,
     vote_count int default 0,
+    author_name varchar(100),
     author_id int,
     foreign key (author_id) references users(id),
     is_closed tinyint default 0,
@@ -36,6 +37,7 @@ create table responses (
     updated_at timestamp default current_timestamp on update current_timestamp,
     post_id int not null,
     author_id int not null,
+    author_name varchar(100),
     is_accepted tinyint default 0,
     foreign key (post_id) references  posts(id),
     foreign key (author_id) references users(id)

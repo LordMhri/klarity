@@ -5,7 +5,7 @@ session_start();
 header('Content-Type: text/html; charset=utf-8');
 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/klarity/config/database.php';
 
 
 if (!isset($_SESSION['user_id'])) {
@@ -41,7 +41,6 @@ try {
     $conn = new_PDO_connection();
     $conn->beginTransaction();
 
-    // Insert the post
     $stmt = $conn->prepare("
         INSERT INTO posts (title, type, content, author_id) 
         VALUES (:title, :type, :content, :author_id)
@@ -64,8 +63,6 @@ try {
             if (empty($tag_name)) continue;
 
             $slug = sluggify($tag_name);
-
-            // Find or create tag
             $find_tag->execute([':slug' => $slug]);
             $tag_id = $find_tag->fetchColumn();
 
@@ -88,7 +85,7 @@ try {
 
 
     $_SESSION['success_message'] = "Post created successfully!";
-    header("Location: /bin/feed.php");
+    header("Location: /klarity/bin/feed.php");
     exit;
 
 } catch (PDOException $e) {
@@ -97,7 +94,7 @@ try {
     error_log("Database error: " . $e->getMessage());
     $_SESSION['form_errors'] = ["A database error occurred. Please try again."];
     $_SESSION['form_data'] = $_POST;
-    header("Location: /bin/views/posts/create_post.php");
+    header("Location: /klarity/bin/views/posts/create_post.php");
     exit;
 }
 

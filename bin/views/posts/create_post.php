@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed - Q&A Platform</title>
-    <link rel="stylesheet" href="/public2/styles/footer.css">
-    <link rel="stylesheet" href="/public2/styles/feed.css">
-    <link rel="stylesheet" href="/public2/styles/navbar.css">
-    <link rel="stylesheet" href="/public2/styles/create_post.css">
-    <script src ="/public2/scripts/create_post.js"></script>
-
+    <link rel="stylesheet" href="/klarity/public2/styles/footer.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/feed.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/navbar.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/create_post.css">
 </head>
 <body>
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/public2/includes/navbar.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/klarity/public2/includes/navbar.php'); ?>
 <div class="feed-container">
     <div class="left-side-bar">
         <nav class="links">
@@ -30,7 +28,7 @@
         <div class="post-creation-section">
            
 
-            <form action="submit_post.php" method="POST">
+            <form action="../../handlers/submit_post.php" method="POST">
                 <input type="hidden" name="type" value="question">
 
                 <div class="title-group">
@@ -75,7 +73,52 @@
         <p>This is where the metrics be</p>
     </div>
 </div>
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/public2/includes/footer.php');; ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/klarity/public2/includes/footer.php');; ?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tagInput = document.getElementById("postTags");
+        const tagsContainer = document.getElementById("tagsContainer");
+        const tagsArrayInput = document.getElementById("tagsArray");
+        let tags = [];
+
+        tagInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const tagText = tagInput.value.trim();
+
+                if (tagText && !tags.includes(tagText) && tags.length < 5) {
+                    tags.push(tagText);
+                    renderTags();
+                }
+
+                tagInput.value = "";
+            }
+        });
+
+        function renderTags() {
+            tagsContainer.innerHTML = "";
+            tags.forEach((tag, index) => {
+                const tagEl = document.createElement("span");
+                tagEl.className = "tag";
+                tagEl.textContent = tag;
+
+                const removeBtn = document.createElement("button");
+                removeBtn.textContent = "×";
+                removeBtn.className = "remove-tag";
+                removeBtn.addEventListener("click", function () {
+                    tags.splice(index, 1);
+                    renderTags();
+                });
+
+                tagEl.appendChild(removeBtn);
+                tagsContainer.appendChild(tagEl);
+            });
+
+            tagsArrayInput.value = tags.join(",");
+        }
+    });
+</script>
 
 </body>
 </html>

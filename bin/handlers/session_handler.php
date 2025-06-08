@@ -26,3 +26,4 @@ function clear_user_session() {
 function is_logged_in() {
     return isset($_SESSION['user_id']);
 }
+?>

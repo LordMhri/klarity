@@ -30,7 +30,7 @@
 
             <div id="formContainer">
 
-                <form id="loginForm" class="visible">
+                <form id="loginForm" class="visible" method="post" action="/klarity/bin/handlers/login_handler.php">
                     <input type = "text"  name="username" placeholder="Enter your username" required />
                     <input type ="password" name ="password" placeholder="Password" required />
                     <a href="#" class="forgot">Forgot password?</a>

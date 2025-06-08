@@ -17,6 +17,8 @@
 }
 
 
+
+
 .main-content {
      flex: 3;
     /* this is so that main-content takes over 3/totalflx which is 5
@@ -24,25 +26,116 @@
 
 }
 
+
 .post-options {
     display: flex;
     gap: 1rem;
 }
 
-.question-section, .idea-section {
-    flex: 1;
-    border-radius: 30px;
+.left-side-bar {
+    background-color: transparent;
     padding: 1rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.question-section:hover, .idea-section:hover {
-    background: #e1dbdb;
-    border-color: #b69f8c;
+.left-side-bar .links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
+
+.left-side-bar .links li {
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.left-side-bar .links a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.left-side-bar .links a:hover {
+    background-color: #e5e7eb;
+    color: #2563eb;
+}
+
+
+.new-post-section {
+    margin-bottom: 2rem;
+}
+.new-post-section {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.question-section {
+    display: block;
+    width: 100%;
+    background-color: #14b8a6;
+    color: #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.question-section:hover {
+    background-color: #03df73;
+    transform: translateY(-2px);
+}
+
+.question-section h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.question-section .suggestion-text {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background-color: #e5e7eb;
+    color: #374151;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+}
+
+.remove-tag {
+    background: transparent;
+    border: none;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+@media (max-width: 1200px) {
+    .right-side-bar {
+        display: none;
+    }
+}
+
 
 @media (max-width: 768px) {
     .feed-container {
