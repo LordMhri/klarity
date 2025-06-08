@@ -130,6 +130,11 @@
     color: #6b7280;
 }
 
+@media (max-width: 1200px) {
+    .right-side-bar {
+        display: none;
+    }
+}
 
 
 @media (max-width: 768px) {

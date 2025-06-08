@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+
+if (!isset($_SESSION['username'])) {
+    file_put_contents('/home/mhri/issue.log', "Session check failed: " . var_export($_SESSION, true) . "\n", FILE_APPEND);
+    header("Location: /klarity/bin/login.php");
+    exit();
+}
 require_once $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/views/posts/post_card.php";
 
 

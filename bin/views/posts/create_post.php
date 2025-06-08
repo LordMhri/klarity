@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="/klarity/public2/styles/feed.css">
     <link rel="stylesheet" href="/klarity/public2/styles/navbar.css">
     <link rel="stylesheet" href="/klarity/public2/styles/create_post.css">
-    <script src ="/public2/scripts/create_post.js"></script>
-
 </head>
 <body>
 
