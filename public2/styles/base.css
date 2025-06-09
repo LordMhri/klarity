@@ -1,6 +1,6 @@
 :root {
-    --primary-color : #003973; /*Regal blue*/
-    --secondary-color : #e5e5be /*Beryl Green*/;
+    --primary-color : #003973;
+    --secondary-color : #e5e5be;
 
     --text-color : black;
 
@@ -19,7 +19,7 @@
 
 body {
     background: var(--main-gradient);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
