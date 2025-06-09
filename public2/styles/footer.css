@@ -20,7 +20,12 @@ footer {
     padding: 20px;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
     margin-top: auto;
+}
+
+* {
+    margin: 0;
 }
 
 /*TODO: take care of list ordering if

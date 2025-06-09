@@ -1,3 +1,16 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-container {
+    flex: 1;
+}
+
 .feed-container {
     display: flex;
     justify-content: center;
