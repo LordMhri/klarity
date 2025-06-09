@@ -1,0 +1,121 @@
+body {
+    background-color: #dee2e6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbc0c4;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbc0c4;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-height: 200px;
+    resize: vertical;
+    box-sizing: border-box;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #3b7ddd;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 125, 221, 0.1);
+}
+
+.submit-button {
+    background-color: #0a95ff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.submit-button:hover {
+    background-color: #0074cc;
+}
+
+.cancel-button {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+}
+
+.cancel-button:hover {
+    background-color: #dc3545; /* Warning red on hover */
+}
+
+.message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.message.success {
+    color: #0a7b50;
+    background-color: #f1f9f6;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    color: #d63638;
+    background-color: #fdf3f4;
+    border: 1px solid #f5c6cb;
+}

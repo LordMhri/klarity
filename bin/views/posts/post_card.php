@@ -1,14 +1,22 @@
 <?php
-function render_post_card(array $posts): string {
-    $title = htmlspecialchars($posts['title']);
-    $id = htmlspecialchars($posts['id']);
-    $content = htmlspecialchars($posts['content']);
-    $response_count = htmlspecialchars($posts['response_count']);
-    $view_count = htmlspecialchars($posts['view_count']);
-    $vote_count = htmlspecialchars($posts['vote_count']);
-    $created_at = htmlspecialchars($posts['created_at']);
-    $type = $posts['type'] === 'idea' ? 'Idea' : 'Question';
+function render_post_card(array $post): string {
+    $title = htmlspecialchars($post['title']);
+    $id = htmlspecialchars($post['id']);
+    $content = htmlspecialchars($post['content']);
+    $response_count = htmlspecialchars($post['response_count']);
+    $view_count = htmlspecialchars($post['view_count']);
+    $vote_count = htmlspecialchars($post['vote_count']);
+    $created_at = htmlspecialchars($post['created_at']);
+    $type = $post['type'] === 'idea' ? 'Idea' : 'Question';
 
+    $edit_button = '';
+    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['author_id']) {
+        $edit_button = <<<HTML
+            <a href="/klarity/bin/views/posts/edit_post.php?id={$id}" class="edit-post-icon" title="Edit Post">
+                Edit Post
+            </a>
+        HTML;
+    }
 
     return <<<HTML
     <a href="/klarity/bin/views/posts/single_post.php?id={$id}" class="post-card-link">
@@ -22,6 +30,7 @@ function render_post_card(array $posts): string {
                 <div class="post-header">
                     <span class="post-type">{$type}</span>
                     <h3 class="post-title">{$title}</h3>
+                    {$edit_button}
                 </div>
                 <div class="post-body">
                     <p>{$content}</p>
@@ -41,4 +50,5 @@ function render_post_card(array $posts): string {
     </a>
     HTML;
 }
+
 ?>
