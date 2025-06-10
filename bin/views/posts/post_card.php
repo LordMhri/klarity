@@ -2,6 +2,7 @@
 function render_post_card(array $post): string {
     $title = htmlspecialchars($post['title']);
     $id = htmlspecialchars($post['id']);
+    $author_name = htmlspecialchars($post['author_name']);
     $content = htmlspecialchars($post['content']);
     $response_count = htmlspecialchars($post['response_count']);
     $view_count = htmlspecialchars($post['view_count']);
@@ -45,7 +46,7 @@ function render_post_card(array $post): string {
                         <span class="tag">nextjs</span>
                     </div>
                     <div class="post-footer">
-                        <span>Posted by <a href="#" class="author-link">AUTHOR LINK HERE</a></span>
+                        <span>Posted by <a href="#" class="author-link">{$author_name}</a></span>
                         <span>{$created_at}</span>
                         <div class="post-stats">
                             <span class="stat-item">{$response_count} answers</span>
