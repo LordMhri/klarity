@@ -2,7 +2,7 @@
 function render_post_card(array $post): string {
     $title = htmlspecialchars($post['title']);
     $id = htmlspecialchars($post['id']);
-    $tags = $post['tags'] ?? []; // Ensure tags exists, default to empty array
+    $tags = $post['tags'] ?? [];
     $author_name = htmlspecialchars($post['author_name']);
     $content = htmlspecialchars($post['content']);
     $response_count = htmlspecialchars($post['response_count']);
@@ -11,7 +11,7 @@ function render_post_card(array $post): string {
     $created_at = htmlspecialchars($post['created_at']);
     $type = $post['type'] === 'idea' ? 'Idea' : 'Question';
 
-    // Generate edit/delete buttons if user is author
+
     $edit_delete_html = '';
     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['author_id']) {
         $edit_delete_html = <<<HTML
@@ -27,7 +27,6 @@ function render_post_card(array $post): string {
         HTML;
     }
 
-    // Generate tags HTML
     $tags_html = '';
     foreach ($tags as $tag) {
         $tag_escaped = htmlspecialchars($tag);
