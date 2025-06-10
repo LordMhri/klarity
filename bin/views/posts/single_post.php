@@ -36,18 +36,16 @@ global $answers;
     <div class="left-side-bar">
         <nav class="links">
             <ul>
-                <li><a href="/klarity/">Home</a></li>
+                <li><a href="/klarity/bin">Home</a></li>
                 <li><a href="/klarity/bin/views/posts/create_post.php">Ask Question</a></li>
-                <li><a href="#">Tags</a></li>
-                <li><a href="#">Users</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/klarity/bin/views/posts/tags.php">Tags</a></li>
             </ul>
         </nav>
     </div>
 
     <div class="main-content">
         <?php if ($post): ?>
-            <?= render_post_card($post); ?>
+            <?= render_post_card($post , ""); ?>
 
             <div class="answers-section">
                 <?php if ($answers): ?>

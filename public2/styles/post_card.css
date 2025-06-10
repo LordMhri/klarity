@@ -15,14 +15,15 @@
 
 .post-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 0.25rem;
     margin-bottom: 1rem;
 }
 
 .post-type {
     font-size: 0.8rem;
-    color: #3b82f6; /* blue accent for type label */
+    color: #3b82f6;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -30,17 +31,17 @@
 
 .post-title {
     font-size: 1.25rem;
-    color: #111827; /* almost black for contrast */
+    color: #111827;
     margin: 0;
 }
 
 .post-body {
-    color: #4b5563; /* grey for body text */
+    color: #4b5563;
     margin-bottom: 1rem;
 }
 
 .tag {
-    background-color: #e0f2fe; /* light blue for tags */
+    background-color: #e0f2fe;
     color: #0369a1;
     font-size: 0.75rem;
     padding: 0.25rem 0.5rem;
@@ -55,7 +56,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.875rem;
-    color: #6b7280; /* soft grey */
+    color: #6b7280;
 }
 
 .author-link {
@@ -90,12 +91,12 @@
     border: none;
     font-size: 1rem;
     cursor: pointer;
-    color: #6b7280; /* grey for default */
+    color: #6b7280;
     transition: color 0.2s;
 }
 
 .vote-button:hover {
-    color: #2563eb; /* blue highlight on hover */
+    color: #2563eb;
 }
 
 .vote-count {
@@ -128,4 +129,28 @@
 
 .post-card-link:hover .post-card {
     background-color: #f9fafb;
+}
+
+
+.editicon{
+    width: 30px;
+    height: 30px;
+    border-radius: 30%;
+    padding: 5px;
+
+}
+.editicon:hover {
+    background-color: #e1ecf4;
+
+}
+
+.post-actions {
+    display: flex;
+    align-items: center ;
+}
+
+.delete-button {
+    background-color: white;
+    border: none;
+
 }

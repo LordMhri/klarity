@@ -62,7 +62,7 @@ try {
 
         foreach ($tags as $tag_name) {
             $tag_name = trim($tag_name);
-            if (empty($tag_name)) continue;
+            if (empty($tag_name)) continue      ;
 
             $slug = sluggify($tag_name);
             $find_tag->execute([':slug' => $slug]);

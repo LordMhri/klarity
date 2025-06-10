@@ -16,11 +16,10 @@
     <div class="left-side-bar">
         <nav class="links">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Ask Question</a></li>
-                <li><a href="#">Tags</a></li>
-                <li><a href="#">Users</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/klarity/bin/feed.php">Home</a></li>
+                <li><a href="/klarity/bin/views/posts/create_post.php">Ask Question</a></li>
+                <li><a href="/klarity/bin/views/posts/tags.php">Tags</a></li>
+
             </ul>
         </nav>
     </div>
@@ -28,7 +27,7 @@
         <div class="post-creation-section">
            
 
-            <form action="../../handlers/submit_post.php" method="POST">
+            <form action="/klarity/bin/handlers/submit_post.php" method="POST">
                 <input type="hidden" name="type" value="question">
 
                 <div class="title-group">

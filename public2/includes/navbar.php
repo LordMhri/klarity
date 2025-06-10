@@ -1,5 +1,9 @@
-<!--<link rel="stylesheet" href="/public2/styles/navbar.css">-->
+<?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const navLinks = document.querySelector('.nav-links');
@@ -21,13 +25,23 @@
     </div>
     <ul class="nav-links">
         <li> <a href="/klarity/bin/feed.php"> Feed </a> </li>
-        <li><a href="/klarity/bin/create_post.php"> Questions</a> </li>
+        <li><a href="/klarity/bin/views/posts/create_post.php"> Questions</a> </li>
     </ul>
+
     <div class="search-container">
-        <input type="text">
-        <button type="submit">SEARCH </button>
+        <form action="/klarity/bin/feed.php" method="get" style="display:inline;">
+            <input type="text" name="search" placeholder="Search posts...">
+            <button type="submit">SEARCH</button>
+        </form>
     </div>
-    <div class = 'account-icon'>
-        <img src="/klarity/public2/assets/account.svg" height="40px" width="40px">
+
+
+    <div class="account-icon">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="/klarity/bin/handlers/logout_handler.php" class="logout-button">Logout</a>
+        <?php else: ?>
+            <a href="/klarity/login.php" class="login-link">Login</a>
+            <a href="/klarity/register.php" class="register-link">Register</a>
+        <?php endif; ?>
     </div>
 </nav>

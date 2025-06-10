@@ -37,8 +37,8 @@
                 </form>
 
                 <form id="signupForm" class="hidden" action="/klarity/bin/handlers/register_handler.php" method="post">
-                    <input type="text" placeholder="Username" name="username" required />
-                    <input type="email" placeholder="Email" name="email" required />
+                    <input type="text" placeholder="Username" name="username" id="username" required />
+                    <input type="email" placeholder="Email" name="email" id="email" required />
                     <input type="password" placeholder="Password" id="password"  name="password" required />
                     <input type="password" placeholder="Confirm Password" id = "confirm-password" required />
                     <button type="submit" class="login-btn" id="signupSubmit">Signup</button>

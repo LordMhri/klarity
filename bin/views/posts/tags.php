@@ -67,7 +67,7 @@ $tags = include($_SERVER['DOCUMENT_ROOT'] . '/klarity/bin/handlers/fetch_tags.ph
             </div>
         </div>
         <div class="right-side-bar">
-            <p>This is where the metrics be</p>
+<!--            <p>This is where the metrics be</p>-->
         </div>
     </div>
 </main>

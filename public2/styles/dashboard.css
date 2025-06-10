@@ -1,27 +1,27 @@
-    .page-container {
-        display: flex;
-        flex-direction: row;
-        border: 2px solid red;
-        height: 100vh;
-    }
+.page-container {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid red;
+    height: 100vh;
+}
 
-    .left-side-bar {
-        border: 2px solid blue;
-        padding: 10px;
-    }
+.left-side-bar {
+    border: 2px solid blue;
+    padding: 10px;
+}
 
-    .main-content {
-        border: 2px solid green;
-        flex-grow: 1;
-    }
+.main-content {
+    border: 2px solid green;
+    flex-grow: 1;
+}
 
-    .right-side-bar {
-        border: 2px solid violet;
-    }
+.right-side-bar {
+    border: 2px solid violet;
+}
 
-    li {
-        list-style-type: none;
-    }
+li {
+    list-style-type: none;
+}
 
 
 

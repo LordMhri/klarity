@@ -22,8 +22,8 @@ $posts = require $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/handlers/fetch_posts.
     <title>News Feed - Q&A Platform</title>
     <link rel="stylesheet" href="/klarity/public2/styles/feed.css">
     <link rel="stylesheet" href="/klarity/public2/styles/navbar.css">
-    <link rel="stylesheet" href="/klarity/public2/styles/post_card.css">
     <link rel="stylesheet" href="/klarity/public2/styles/footer.css">
+    <link rel="stylesheet" href="/klarity/public2/styles/post_card.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@ $posts = require $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/handlers/fetch_posts.
                 <ul>
                     <li><a href="/klarity/bin/feed.php">Home</a></li>
                     <li><a href="/klarity/bin/views/posts/create_post.php">Ask Question</a></li>
-                    <li><a href="#">Tags</a></li>
+                    <li><a href="/klarity/bin/views/posts/tags.php">Tags</a></li>
                 </ul>
             </nav>
         </div>
@@ -52,9 +52,10 @@ $posts = require $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/handlers/fetch_posts.
 
             <div class="posts-container" id="posts-container">
                 <?php
+                $search = trim($_GET['search'] ?? '');
                 if ($posts) {
                     foreach ($posts as $post) {
-                        echo render_post_card($post);
+                        echo render_post_card($post,$search);
                     }
                 } else {
                     echo "<p>No posts yet!</p>";
@@ -63,13 +64,17 @@ $posts = require $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/handlers/fetch_posts.
             </div>
         </div>
         <div class="right-side-bar">
-            <p>This is where the metrics be</p>
+<!--            <p>This is where the metrics be</p>-->
         </div>
     </div>
 </main>
 
     <?php include ($_SERVER['DOCUMENT_ROOT'] . '/klarity/public2/includes/footer.php'); ?>
-
+<script >
+    function searchFilter(){
+        let word = document.getElementById("search");
+    }
+</script>
 
 </body>
 

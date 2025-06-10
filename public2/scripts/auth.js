@@ -1,47 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-
-    // const signupSubmit = document.getElementById('signupSubmit');
-    // const password = document.getElementById('password');
-    // const confirmPassword = document.getElementById('confirm-password');
-    // const signupMessage = document.getElementById('signupMessage');
-
-    // signupForm.addEventListener('submit', (e) => {
-    //     if (password.value !== confirmPassword.value) {
-    //         e.preventDefault();
-    //         signupMessage.textContent = 'Passwords do not match!';
-    //         signupMessage.style.color = 'red';
-    //
-    //
-    //         alert('Passwords do not match! Please try again.');
-    //
-    //
-    //         // password.value = '';
-    //         confirmPassword.value = '';
-    //         password.focus();
-    //     }
-    // });
-    //
-    // confirmPassword.addEventListener('input', () => {
-    //     if (password.value !== confirmPassword.value) {
-    //         signupMessage.textContent = 'Passwords do not match!';
-    //         signupMessage.style.color = 'red';
-    //     } else {
-    //         signupMessage.textContent = 'Passwords match!';
-    //         signupMessage.style.color = 'green';
-    //     }
-    // });
-
-
-});
 
 function validateSignupForm() {
-    const username = document.getElementsByName('username')[0].value.trim();
-    const email = document.getElementsByName('email')[0].value.trim();
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
     const messageDiv = document.getElementById('signupMessage');
-
+    console.log(username, email, password, confirmPassword);
     messageDiv.textContent = '';
 
     if (!username || !email || !password || !confirmPassword) {
@@ -55,10 +19,12 @@ function validateSignupForm() {
         return false;
     }
 
-    if (password.length < 6) {
-        messageDiv.textContent = 'Password must be at least 6 characters.';
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordPattern.test(password)) {
+        messageDiv.textContent = 'Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
         return false;
     }
+
 
     if (password !== confirmPassword) {
         messageDiv.textContent = 'Passwords do not match.';
@@ -68,7 +34,6 @@ function validateSignupForm() {
     return true;
 }
 
-// Attach the validator to the signup form submit event
 document.addEventListener('DOMContentLoaded', () => {
 
 

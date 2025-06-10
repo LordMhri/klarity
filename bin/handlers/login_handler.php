@@ -9,7 +9,6 @@ $conn = new_PDO_connection();
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
-// Logging for debug
 file_put_contents('/home/mhri/issue.log', "Login attempt for $username\n", FILE_APPEND);
 
 $query = 'SELECT id, username, password FROM users WHERE username = :username';
