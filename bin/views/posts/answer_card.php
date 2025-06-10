@@ -3,7 +3,7 @@
 function  render_answer_card($answers) : string
 {
     $content = htmlspecialchars($answers['content']);
-    $author_id = htmlspecialchars($answers['author_id']);
+    $author_name = htmlspecialchars($answers['author_name']);
 
 
     return <<<HTML
@@ -11,7 +11,7 @@ function  render_answer_card($answers) : string
         <div class="answer-content">
                <p>$content</p>
                <div class="answer-meta">
-                <p class="author-link">{$author_id}</p>
+                <p class="author-link">{$author_name}</p>
                </div>
         </div>
         

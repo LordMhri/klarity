@@ -19,7 +19,7 @@ $title = trim($_POST['title'] ?? '');
 $content = trim($_POST['content'] ?? '');
 $username = $_SESSION['username'];
 $type = $_POST['type'] ?? 'question';
-$tags = json_decode($_POST['tags_array'] ?? '[]', true) ?? [];
+$tags = array_filter(array_map('trim', explode(',', $_POST['tags_array'] ?? '')));
 
 if (empty($title)) {
     $errors[] = "Title is required";
@@ -57,7 +57,7 @@ try {
 
     if (!empty($tags)) {
         $find_tag = $conn->prepare("SELECT id FROM tags WHERE slug = :slug LIMIT 1");
-        $insert_tag = $conn->prepare("INSERT INTO tags (name, slug) VALUES (:name, :slug)");
+        $insert_tag = $conn->prepare("INSERT INTO tags (tag, slug) VALUES (:name, :slug)");
         $link_tag = $conn->prepare("INSERT INTO post_tags (post_id, tag_id) VALUES (:post_id, :tag_id)");
 
         foreach ($tags as $tag_name) {
@@ -96,6 +96,7 @@ try {
     error_log("Database error: " . $e->getMessage());
     $_SESSION['form_errors'] = ["A database error occurred. Please try again."];
     $_SESSION['form_data'] = $_POST;
+    file_put_contents("/home/mhri/issue.log", $e->getMessage() . PHP_EOL, FILE_APPEND);
     header("Location: /klarity/bin/views/posts/create_post.php");
     exit;
 }

@@ -2,6 +2,7 @@
 function render_post_card(array $post): string {
     $title = htmlspecialchars($post['title']);
     $id = htmlspecialchars($post['id']);
+    $tags = $post['tags'] ?? []; // Ensure tags exists, default to empty array
     $author_name = htmlspecialchars($post['author_name']);
     $content = htmlspecialchars($post['content']);
     $response_count = htmlspecialchars($post['response_count']);
@@ -10,6 +11,7 @@ function render_post_card(array $post): string {
     $created_at = htmlspecialchars($post['created_at']);
     $type = $post['type'] === 'idea' ? 'Idea' : 'Question';
 
+    // Generate edit/delete buttons if user is author
     $edit_delete_html = '';
     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['author_id']) {
         $edit_delete_html = <<<HTML
@@ -22,6 +24,15 @@ function render_post_card(array $post): string {
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </div>
+        HTML;
+    }
+
+    // Generate tags HTML
+    $tags_html = '';
+    foreach ($tags as $tag) {
+        $tag_escaped = htmlspecialchars($tag);
+        $tags_html .= <<<HTML
+            <span class="tag">{$tag_escaped}</span>
         HTML;
     }
 
@@ -42,8 +53,9 @@ function render_post_card(array $post): string {
                     </div>
                     <div class="post-body">
                         <p>{$content}</p>
-                        <span class="tag">reactjs</span>
-                        <span class="tag">nextjs</span>
+                        <div class="tags-container">
+                            {$tags_html}
+                        </div>
                     </div>
                     <div class="post-footer">
                         <span>Posted by <a href="#" class="author-link">{$author_name}</a></span>

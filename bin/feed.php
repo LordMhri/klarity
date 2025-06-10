@@ -36,8 +36,8 @@ $posts = require $_SERVER['DOCUMENT_ROOT'] . "/klarity/bin/handlers/fetch_posts.
         <div class="left-side-bar">
             <nav class="links">
                 <ul>
-                    <li><a href="/bin/feed.php">Home</a></li>
-                    <li><a href="/bin/views/posts/create_post.php">Ask Question</a></li>
+                    <li><a href="/klarity/bin/feed.php">Home</a></li>
+                    <li><a href="/klarity/bin/views/posts/create_post.php">Ask Question</a></li>
                     <li><a href="#">Tags</a></li>
                 </ul>
             </nav>

@@ -7,7 +7,6 @@
     <title>Login Form</title>
     <link rel="stylesheet" href="/klarity/public2/styles/base.css" />
     <link rel="stylesheet" href="/klarity/public2/styles/auth.css" />
-    <script src = '/klarity/public2/scripts/auth.js'></script>
 
 
 </head>
@@ -50,5 +49,6 @@
     </div>
 </div>
 
+<script src = '/klarity/public2/scripts/auth.js'></script>
 </body>
 </html>

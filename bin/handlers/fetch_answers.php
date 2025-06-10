@@ -20,6 +20,7 @@ try {
     $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
     $stmt->execute();
     $answers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     file_put_contents('/home/mhri/issue.log', "Fetched Answers for post_id " . $post_id . ": " . print_r($answers, true) . "\n", FILE_APPEND);
 } catch (PDOException $e) {
     file_put_contents('/home/mhri/issue.log', "PDO Error in fetch_answers.php: " . $e->getMessage() . "\n", FILE_APPEND);
