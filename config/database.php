@@ -18,7 +18,7 @@ $DB_USER = $_ENV['DB_USER'];
 $DB_PASS = $_ENV['DB_PASS'];
 
 
-function new_PDO_connection(): ?PDO
+function  new_PDO_connection(): ?PDO
 {
     static $conn = null;
     global $DB_PASS, $DB_HOST, $DB_USER, $DB_NAME;

@@ -21,10 +21,7 @@
     </div>
     <ul class="nav-links">
         <li> <a href="/klarity/bin/feed.php"> Feed </a> </li>
-        <li><a href="#"> Questions</a> </li>
-        <li><a href="#"> Ideas</a></li>
-        <li><a href="#"> Tags </a></li>
-        <li><a href="#"> Users</a></li>
+        <li><a href="/klarity/bin/create_post.php"> Questions</a> </li>
     </ul>
     <div class="search-container">
         <input type="text">

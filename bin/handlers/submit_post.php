@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id'])) {
 $errors = [];
 $title = trim($_POST['title'] ?? '');
 $content = trim($_POST['content'] ?? '');
+$username = $_SESSION['username'];
 $type = $_POST['type'] ?? 'question';
 $tags = json_decode($_POST['tags_array'] ?? '[]', true) ?? [];
 
@@ -42,11 +43,12 @@ try {
     $conn->beginTransaction();
 
     $stmt = $conn->prepare("
-        INSERT INTO posts (title, type, content, author_id) 
-        VALUES (:title, :type, :content, :author_id)
+        INSERT INTO posts (title,author_name ,type, content, author_id) 
+        VALUES (:title, :author_name,:type, :content, :author_id)
     ");
     $stmt->execute([
         ':title' => $title,
+        ":author_name" => $username,
         ':type' => $type,
         ':content' => $content,
         ':author_id' => $_SESSION['user_id']

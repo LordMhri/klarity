@@ -79,3 +79,11 @@ create table post_tags(
     foreign key (post_id) references posts(id),
     PRIMARY KEY (tag_id,post_id)
 );
+
+
+ALTER TABLE responses
+    DROP FOREIGN KEY responses_ibfk_1;
+
+ALTER TABLE responses
+    ADD CONSTRAINT responses_ibfk_1
+        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE;
